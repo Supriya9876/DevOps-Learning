@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pvpvcpod
+  name: pvpvcpod
+spec:
+  volumes:
+    - name: pvpvcvol
+      persistentVolumeClaim:
+        claimName: mynewpvc
+  containers:
+  - image: nginx
+    name: pvpvcpod
+    volumeMounts:
+    - name: pvpvcvol
+      mountPath: /mnt/data
